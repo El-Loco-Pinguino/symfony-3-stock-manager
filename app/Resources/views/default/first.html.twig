@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gestion de stocks</h1>
+    <h2>Concept</h2>
+    <p>Ceci est un gestionnaire de stocks via une base de données MySQL.</p>
+    <h2>Routes à tester</h2>
+    <ul>
+        <li>
+            <em>/materials</em> vous permettra d'accéder à la liste de tous les produits
+        </li>
+        <li>
+            <em>/materials/[id]</em> vous permettra d'accéder à des détails sur le matériel [id], sous condition qu'il existe
+        </li>
+        <li>
+            <em>/form/[id]</em> vous permettra d'accéder au formulaire de modification au sujet du matériel [id], sous condition qu'il existe
+        </li>
+        <li>
+            <em>/remove/[id]</em> vous permettra d'enlever 1 au stock du matériel [id], sous condition qu'il existe et que son stock ne soit pas déjà à zéro
+        </li>
+        <li>
+            <em>/generate</em> vous permettra de générer 10 nouveaux matériels aléatoires en base de données
+        </li>
+    </ul>
+    <a class="buttonLink" href="/materials">Accéder à la liste</a>
+{% endblock %}

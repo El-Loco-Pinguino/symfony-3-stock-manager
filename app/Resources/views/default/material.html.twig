@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="details">
+        <h1>{{ material.materialName }}</h1>
+        <ul>
+            <li>Prix: {{ material.materialPrice|number_format(2, '€', '')}}</li>
+            <li>En stock: {{ material.materialQuantity }}</li>
+        </ul>
+    </div>
+    <div class="buttonLink">
+        <a href="/materials" onclick="window.open('/materials','_self').close()">Fermer cette fenêtre et retourner à la liste</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Gestion de stocks {% if pageTitle is defined %}- {{pageTitle}}{% endif %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="/style.css">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#materialList').dataTable( {
+                    "language": {
+                        "sProcessing":    "Traitement en cours...",
+                        "sLengthMenu":    "Afficher _MENU_ éléments",
+                        "sZeroRecords":   "Aucun résultat trouvé",
+                        "sEmptyTable":    "Aucune donnée présente",
+                        "sInfo":          "Affichage des résultats _START_ à _END_ sur _TOTAL_ résultats",
+                        "sInfoEmpty":     "Affichage des résultats 0 à 0 sur 0 résultats",
+                        "sInfoFiltered":  "(filtrage des _MAX_ résultats)",
+                        "sInfoPostFix":   "",
+                        "sSearch":        "Rechercher:",
+                        "sUrl":           "",
+                        "sInfoThousands":  ",",
+                        "sLoadingRecords": "Chargement...",
+                        "oPaginate": {
+                            "sFirst":    "Premier",
+                            "sLast":    "Dernier",
+                            "sNext":    "Suivant",
+                            "sPrevious": "Précédent"
+                        },
+                        "oAria": {
+                            "sSortAscending":  ": Activer pour trier cette colonne dans l'ordre croissant",
+                            "sSortDescending": ": Activer pour trier cette colonne dans l'ordre décroissant"
+                        }
+                    },
+                    "aoColumnDefs": [
+                        { "bSortable": false, "aTargets": [ 4 ] }
+                    ]
+                } );
+            } );
+        </script>
+        {% endblock %}
+    </body>
+</html>

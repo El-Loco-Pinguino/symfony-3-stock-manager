@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Index</h1>
+    {% if error is defined %}
+        <p>Attention: <strong>{{ error }}</strong></p>
+    {% endif %}
+    <table id="materialList">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>En stock</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>    
+        </thead>
+        <tbody>
+    {% if materials is defined %}
+        {% for material in materials %}
+            {% if material.materialQuantity != 0 %}
+            <tr>
+            {% else %}
+            <tr class="zeroStock">
+            {% endif %}
+                <td>{{ material.materialName }}</td>
+                <td>{{ material.materialPrice|number_format(2, '€', '') }}</td>
+                {% if material.materialQuantity != 0 %}
+                    <td>{{ material.materialQuantity }}</td>
+                {% else %}
+                    <td>Rupture de stock</td>
+                {% endif %}
+                <td>{{ material.materialCreatedAt|date("d-m-Y") }}</td>
+                <td>
+                    <div class="buttonLink"><a href="/materials/{{material.materialId}}" target="_blank">Voir en détail</a></div>
+                    <div class="buttonLink"><a href="/form/{{material.materialId}}">Modifier</a></div>
+                    {% if material.materialQuantity != 0 %}
+                        <div class="buttonLink"><a href="/remove/{{material.materialId}}">Enlever 1 au stock</a></div>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>aaaa</p>
+    {% endif %}
+{% endblock %}
